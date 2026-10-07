@@ -1,0 +1,360 @@
+/* =========================================
+   BASIC PAGE SETUP
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(
+    180deg,
+    #0c4380 0%,
+    #1d6fb5 50%,
+    #124b87 100%
+  );
+}
+
+
+/* =========================================
+   MAIN BIRTHDAY BACKGROUND
+========================================= */
+
+.birthday-container {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   BIG BIRTHDAY IMAGE / BACKGROUND
+========================================= */
+
+.birthday-background {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  top: 0;
+  left: 0;
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   PHOTO CONFETTI CONTAINER
+========================================= */
+
+.photo-confetti {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: 3;
+}
+
+
+/* =========================================
+   INDIVIDUAL MINI PHOTOS
+========================================= */
+
+.mini-photo {
+  position: absolute;
+
+  width: 65px;
+  height: 65px;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  filter: drop-shadow(
+    0 5px 8px rgba(0, 0, 0, 0.3)
+  );
+
+  animation:
+    floatPhoto 6s ease-in-out infinite,
+    rotatePhoto 8s ease-in-out infinite;
+}
+
+
+/* SMALL */
+
+.mini-photo.small {
+  width: 45px;
+  height: 45px;
+}
+
+
+/* MEDIUM */
+
+.mini-photo.medium {
+  width: 65px;
+  height: 65px;
+}
+
+
+/* LARGE */
+
+.mini-photo.large {
+  width: 90px;
+  height: 90px;
+}
+
+
+/* =========================================
+   FLOATING ANIMATION
+========================================= */
+
+@keyframes floatPhoto {
+
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  25% {
+    transform: translate(8px, -10px);
+  }
+
+  50% {
+    transform: translate(-5px, -20px);
+  }
+
+  75% {
+    transform: translate(10px, -8px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+
+}
+
+
+/* =========================================
+   GENTLE ROTATION
+========================================= */
+
+@keyframes rotatePhoto {
+
+  0% {
+    rotate: -8deg;
+  }
+
+  50% {
+    rotate: 8deg;
+  }
+
+  100% {
+    rotate: -8deg;
+  }
+
+}
+
+
+/* =========================================
+   DIFFERENT ANIMATION SPEEDS
+========================================= */
+
+.mini-photo:nth-child(2n) {
+  animation-duration: 7s, 10s;
+}
+
+.mini-photo:nth-child(3n) {
+  animation-duration: 5s, 7s;
+}
+
+.mini-photo:nth-child(4n) {
+  animation-delay: -2s;
+}
+
+.mini-photo:nth-child(5n) {
+  animation-delay: -4s;
+}
+
+
+/* =========================================
+   OPTIONAL GLOW EFFECT
+========================================= */
+
+.mini-photo:nth-child(odd) {
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.35))
+    drop-shadow(0 5px 8px rgba(0, 0, 0, 0.3));
+}
+
+
+/* =========================================
+   MAKE SURE MAIN CONTENT IS ABOVE
+========================================= */
+
+.main-content {
+  position: relative;
+  z-index: 5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+  .birthday-background {
+    object-fit: cover;
+  }
+
+  .mini-photo.small {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mini-photo.medium {
+    width: 45px;
+    height: 45px;
+  }
+
+  .mini-photo.large {
+    width: 60px;
+    height: 60px;
+  }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media screen and (max-width: 480px) {
+
+  .mini-photo.small {
+    width: 25px;
+    height: 25px;
+  }
+
+  .mini-photo.medium {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mini-photo.large {
+    width: 50px;
+    height: 50px;
+  }
+
+}
+
+
+.candle-count-display {
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: #f0e4d0;
+  background-color: #ff8fab;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ffc2d1;
+}
+
+.candle-count-display span {
+  font-weight: bold;
+  color: #AD030F;
+}
+
+.candle {
+  background-color: #7B020B;
+  width: 12px;
+  height: 35px;
+  border-radius: 6px/3px;
+  top: -20px;
+  left: 50%;
+  margin-left: -8px;
+  z-index: 10;
+}
+.candle:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ad030f;
+}
+
+.candle.out .flame {
+  display: none;
+}
+
+.flame {
+  position: absolute;
+  background-color: orange;
+  width: 10px;
+  height: 25px;
+  border-radius: 8px 8px 8px 8px/20px 20px 8px 8px;
+  top: -34px;
+  left: 50%;
+  margin-left: -7.5px;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  transform-origin: 50% 90%;
+  animation: flicker 1s ease-in-out alternate infinite;
+}
+
+@keyframes flicker {
+  0% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.2), 0 0 20px rgba(255, 165, 0, 0.2), 0 0 60px rgba(255, 165, 0, 0.2), 0 0 80px rgba(255, 165, 0, 0.2);
+  }
+  25% {
+    transform: skewX(-5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+  50% {
+    transform: skewX(10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3), 0 0 20px rgba(255, 165, 0, 0.3), 0 0 60px rgba(255, 165, 0, 0.3), 0 0 80px rgba(255, 165, 0, 0.3);
+  }
+  75% {
+    transform: skewX(-10deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.4), 0 0 80px rgba(255, 165, 0, 0.4);
+  }
+  100% {
+    transform: skewX(5deg);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
+  }
+}
